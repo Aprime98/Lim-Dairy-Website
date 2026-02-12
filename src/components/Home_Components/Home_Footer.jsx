@@ -16,7 +16,7 @@ export default function Footer() {
                             <Link to="/products">
                                 <a className="hover:text-green-500 transition">Products</a>
                             </Link>
-                            <Link to="/aboutus">
+                            <Link to="/about">
                                 <a className="hover:text-green-500 transition">About Us</a>
                             </Link>
                         </ul>

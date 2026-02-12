@@ -17,7 +17,7 @@ export default function Navbar() {
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <div className="flex items-center">
-                        <a href="/" className="">
+                        <a href="/">
                             <img src="/logo.png"
                                  alt="Limuru Fresh Dairy"
                                  className="h-12 w-auto" />
