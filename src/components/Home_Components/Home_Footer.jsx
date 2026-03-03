@@ -1,9 +1,10 @@
 import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import {Link} from 'react-router-dom';
 
+
 export default function Footer() {
     return (
-        <footer id="stores" className="bg-gray-900 text-white py-12">
+        <footer id="stores" className="bg-dairyBlue/75 text-white py-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid md:grid-cols-4 gap-8 mb-8">
                     {/* Quick Links */}
@@ -39,6 +40,19 @@ export default function Footer() {
                 </div>
 
                 {/* Footer Bottom */}
+
+                {/*<div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">*/}
+                {/*    <iframe*/}
+                {/*        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d510553.43887069233!2d36.162529!3d-1.3573712!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f27b094159237%3A0xc295ecb04788dccf!2sLimuru%20Dairy%20Farmers%20Co-Operative%20Society!5e0!3m2!1sen!2ske!4v1772011214372!5m2!1sen!2ske"*/}
+                {/*        width="100%"*/}
+                {/*        height="100%"*/}
+                {/*        style={{border:0}}*/}
+                {/*        allowFullScreen=""*/}
+                {/*        loading="lazy"*/}
+                {/*        referrerPolicy="no-referrer-when-downgrade">*/}
+                {/*    </iframe>*/}
+                {/*</div>*/}
+
                 <div className="border-t border-gray-600 pt-8 text-center ">
                     <p>&copy; 2026 Limuru Dairy Farmers Co-Operative Society. All rights reserved.</p>
                 </div>

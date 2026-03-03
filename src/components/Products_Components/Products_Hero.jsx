@@ -6,7 +6,7 @@ export default function ProductsHero() {
                       <span className="text-black">
                         Discover naturally made<br />
                         dairy products,
-                        <span className="rounded-full bg-blue-500 text-white px-4 py-1 mx-2">healthy</span>,
+                        <span className="rounded-full bg-dairyBlue text-white px-4 py-1 mx-2">healthy</span>,
                         <br />
                         <span className="rounded-full bg-green-500 text-white px-4 py-1 mx-2">always</span>
                         delicious

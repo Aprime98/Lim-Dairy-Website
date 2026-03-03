@@ -1,4 +1,4 @@
-import {Navbar, Home_Hero, Home_About, Home_Products, Home_Footer} from "../components";
+import {Navbar, Home_Hero, Home_About, Home_Products, Home_Footer, Home_Map} from "../components";
 
 const Home = () => {
     return(
@@ -8,6 +8,7 @@ const Home = () => {
                 <Home_Hero />
                 <Home_About />
                 <Home_Products />
+                <Home_Map />
                 <Home_Footer />
             </div>
         </div>

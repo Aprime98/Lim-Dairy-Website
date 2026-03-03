@@ -8,7 +8,8 @@ export default function Navbar() {
     const navLinks = [
         { name: 'Home', href: '/' },
         { name: 'Products', href: '/products' },
-        { name: 'About Us', href: '/about' },
+        { name: 'AboutUs', href: '/about' },
+        {name: 'Stores', href: '/stores'}
     ];
 
     return (
@@ -30,7 +31,7 @@ export default function Navbar() {
                             <Link
                                 key={link.name}
                                 to={link.href}
-                                className="text-gray-800 hover:text-cyan-500 transition font-spaceGrotesk font-medium text-lg relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-cyan-500 after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full"
+                                className="text-gray-900 hover:text-dairyBlue transition font-spaceGrotesk font-medium text-lg relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-cyan-500 after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full"
                             >
                                 {link.name}
                             </Link>

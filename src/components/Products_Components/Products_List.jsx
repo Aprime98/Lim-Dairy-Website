@@ -12,7 +12,6 @@ export default function ProductsList() {
             description: "Wholesome, smooth milk packed\nfresh for dairy family nourishment",
             imageSrc: packet_milk,
             imageAlt: "Shelf-Stable Milk",
-            ingredients: ["Raw Milk", "Milk Fat", "Preservations"],
             reverse: true
         },
         {
@@ -20,7 +19,6 @@ export default function ProductsList() {
             description: "Creamy, smooth yoghurt blended\nwith sweet, juicy strawberry flavor __\npure delight in every spoonful",
             imageSrc: R_Strawberry,
             imageAlt: "Yogurt",
-            ingredients: ["Raw Milk", "Culture", "Flavour"],
             reverse: false
         },
         {
@@ -28,7 +26,6 @@ export default function ProductsList() {
             description: "Creamy, smooth yoghurt blended\nwith sweet, juicy vanilla flavor __\npure delight in every spoonful",
             imageSrc: R_Vanilla,
             imageAlt: "Cheese",
-            ingredients: ["Raw Milk", "Culture", "Flavour"],
             reverse: true
         }
     ];
@@ -43,7 +40,6 @@ export default function ProductsList() {
                         description={product.description}
                         imageSrc={product.imageSrc}
                         imageAlt={product.imageAlt}
-                        ingredients={product.ingredients}
                         reverse={product.reverse}
                     />
                 ))}

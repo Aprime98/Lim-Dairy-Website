@@ -16,6 +16,9 @@
   --font-fairDisplay: 'Playfair Display', sans-serif;
   --font-spaceGrotesk: 'Space Grotesk', sans-serif;
 }
+@theme {
+  --color-dairyBlue: #2FA3E5;
+}
 
 
 

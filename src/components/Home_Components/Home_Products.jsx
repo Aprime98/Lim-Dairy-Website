@@ -38,7 +38,7 @@ export default function Home_Products (){
                 {/* Product 1 - Milk */}
                 <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 my-16 md:my-24">
                     <div className="md:w-1/2 md:flex justify-center items-center">
-                        <div className="rounded-3xl flex items-center justify-center h-50 w-50 md:h-80 md:w-80 bg-[#2FA3E5]/75 border border-gray-600">
+                        <div className="rounded-3xl flex items-center justify-center h-50 w-50 md:h-80 md:w-80 bg-dairyBlue/75 border border-gray-600">
                             <img src={packet_milk} alt="Shelf-Stable Milk" className="h-3/4"/>
                         </div>
                     </div>

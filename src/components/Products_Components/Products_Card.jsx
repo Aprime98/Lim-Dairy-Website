@@ -5,7 +5,6 @@ export default function ProductCard({
                                         description,
                                         imageSrc,
                                         imageAlt,
-                                        ingredients,
                                         reverse = false
                                     }) {
     const flexDirection = reverse ? "md:flex-row-reverse" : "md:flex-row";
@@ -24,15 +23,15 @@ export default function ProductCard({
                 <p className="text-gray-600 text-base sm:text-lg mb-6">
                     {description}
                 </p>
-                <div className="max-w-md mx-0 px-4 py-6">
-                    <div className="grid grid-cols-3 gap-4 text-center">
-                        {ingredients.map((ingredient, index) => (
-                            <div key={index} className="bg-gray-100 rounded-xl py-3 font-medium text-sm shadow">
-                                {ingredient}
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                {/*<div className="max-w-md mx-0 px-4 py-6">*/}
+                {/*    <div className="grid grid-cols-3 gap-4 text-center">*/}
+                {/*        {ingredients.map((ingredient, index) => (*/}
+                {/*            <div key={index} className="bg-gray-100 rounded-xl py-3 font-medium text-sm shadow">*/}
+                {/*                {ingredient}*/}
+                {/*            </div>*/}
+                {/*        ))}*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </div>
         </div>
     );
