@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import {packet_milk, R_Strawberry} from "../../assets/index.js"
+import {esl, lala, R_Strawberry, R_Vanilla} from "../../assets/index.js"
 
 export default function ProductCarousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -8,34 +8,38 @@ export default function ProductCarousel() {
     const products = [
         {
             id: 1,
-            name: "Fresh Milk",
-            image: packet_milk,
-            description: "Premium quality fresh milk"
+            name: "Limuru Dairy ESL Milk",
+            image: esl,
+            description: "Pure, delicious milk that stays fresh for longer.\n" +
+                "Perfect for tea, coffee, cereals, and your daily nutrition."
         },
         {
             id: 2,
-            name: "Yogurt",
+            name: "Relish Strawberry Yogurt",
             image: R_Strawberry,
-            description: "Creamy and delicious yogurt"
+            description: "Rich, creamy yoghurt with delicious strawberry goodness.\n" +
+                "Sweet, refreshing, and perfect for any time of the day."
         },
         {
             id: 3,
-            name: "Cheese",
-            image: packet_milk,
-            description: "Artisan cheese selection"
+            name: "Relish Vanilla Yogurt",
+            image: R_Vanilla,
+            description: "Deliciously creamy yoghurt with a touch of classic vanilla.\n" +
+                "Simple, smooth, and satisfying anytime."
         },
         {
             id: 4,
-            name: "Butter",
-            image: R_Strawberry,
-            description: "Rich farm-fresh butter"
+            name: "Limuru Dairy Lala",
+            image: lala,
+            description: "Naturally fermented milk with a rich, tangy taste.\n" +
+                "A refreshing and nutritious tradition in every sip."
         },
-        {
-            id: 5,
-            name: "Cream",
-            image: R_Strawberry,
-            description: "Pure dairy cream"
-        }
+        // {
+        //     id: 5,
+        //     name: "All Products",
+        //     image: all_products,
+        //     description: "Rich farm-fresh butter"
+        // },
     ];
 
     const nextSlide = () => {
@@ -76,15 +80,15 @@ export default function ProductCarousel() {
 
                                             {/* Content Side */}
                                             <div className="p-8 md:p-12">
-                                                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                                                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-fairDisplay">
                                                     {product.name}
                                                 </h3>
-                                                <p className="text-gray-600 text-lg mb-8">
+                                                <p className="text-gray-800 text-lg mb-8 font-spaceGrotesk w-96">
                                                     {product.description}
                                                 </p>
-                                                <button className="bg-amber-400 hover:bg-amber-500 text-gray-900 font-semibold px-8 py-3 rounded-lg transition-colors duration-200">
-                                                    Learn More
-                                                </button>
+                                                {/*<button className="bg-amber-400 hover:bg-amber-500 text-gray-900 font-semibold px-8 py-3 rounded-lg transition-colors duration-200">*/}
+                                                {/*    Learn More*/}
+                                                {/*</button>*/}
                                             </div>
                                         </div>
                                     </div>
@@ -127,30 +131,30 @@ export default function ProductCarousel() {
                 </div>
 
                 {/* Optional: Product Grid Preview */}
-                <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-4">
-                    {products.map((product, index) => (
-                        <button
-                            key={product.id}
-                            onClick={() => goToSlide(index)}
-                            className={`relative aspect-square rounded-xl overflow-hidden transition-all duration-300 ${
-                                currentIndex === index
-                                    ? 'ring-4 ring-amber-400 scale-105'
-                                    : 'opacity-60 hover:opacity-100'
-                            }`}
-                        >
-                            <img
-                                src={product.image}
-                                alt={product.name}
-                                className="w-full h-full object-cover"
-                            />
-                            <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent flex items-end p-3">
-                                <span className="text-white text-sm font-semibold">
-                                    {product.name}
-                                </span>
-                            </div>
-                        </button>
-                    ))}
-                </div>
+                {/*<div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-4">*/}
+                {/*    {products.map((product, index) => (*/}
+                {/*        <button*/}
+                {/*            key={product.id}*/}
+                {/*            onClick={() => goToSlide(index)}*/}
+                {/*            className={`relative aspect-square rounded-xl overflow-hidden transition-all duration-300 ${*/}
+                {/*                currentIndex === index*/}
+                {/*                    ? 'ring-4 ring-amber-400 scale-105'*/}
+                {/*                    : 'opacity-60 hover:opacity-100'*/}
+                {/*            }`}*/}
+                {/*        >*/}
+                {/*            <img*/}
+                {/*                src={product.image}*/}
+                {/*                alt={product.name}*/}
+                {/*                className="w-full h-full object-cover"*/}
+                {/*            />*/}
+                {/*            <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent flex items-end p-3">*/}
+                {/*                <span className="text-white text-sm font-semibold">*/}
+                {/*                    {product.name}*/}
+                {/*                </span>*/}
+                {/*            </div>*/}
+                {/*        </button>*/}
+                {/*    ))}*/}
+                {/*</div>*/}
             </div>
         </section>
     );

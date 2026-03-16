@@ -5,7 +5,8 @@ import hero_vector from "./Hero-vector.png"
 import packet_milk from "./longlife.png"
 import R_Vanilla from "./Relish Vanilla.png"
 import esl from "./esl.png"
-import lala from "./lala.png"
+import lala from "./Lala.png"
+import all_products from "./products.png"
 
 export{
     group_photo,
@@ -16,4 +17,5 @@ export{
     R_Vanilla,
     esl,
     lala,
+    all_products
 }

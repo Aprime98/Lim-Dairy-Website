@@ -1,7 +1,10 @@
+import {Navbar, NFTHero} from "../components"
+
 const Stores = () => {
     return (
         <div>
-            <h1> Stores Page </h1>
+            <Navbar />
+            <NFTHero />
         </div>
     )
 }
