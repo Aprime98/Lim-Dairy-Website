@@ -1,16 +1,20 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import {Home, Products, AboutUs, Stores} from "./pages"
+import { Home, Products, AboutUs, Stores } from "./pages";
+import Navbar from "./components/Navbar"; // adjust path if needed
 
 const App = () => {
     return (
         <BrowserRouter>
             <div className="min-h-screen bg-gray-50">
+                {/*<Navbar />*/}
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/products" element={<Products />} />
-                    <Route path ="/about" element={<AboutUs />}/>
-                    <Route path ="/stores" element={<Stores/>}/>
+                    <Route path="/"         element={<Home />}     />
+                    <Route path="/products" element={<Products />}  />
+                    <Route path="/about"    element={<AboutUs />}   />
+                    <Route path="/stores"   element={<Stores />}    />
+                    {/* Catch-all: redirects unknown paths back to home */}
+                    <Route path="*"         element={<Home />}     />
                 </Routes>
             </div>
         </BrowserRouter>

@@ -12,7 +12,8 @@ import About_Vision from "./About_Components/About_Vision.jsx";
 import  Products_Hero from "./Products_Components/Products_Hero.jsx";
 import Products_List from "./Products_Components/Products_List.jsx";
 import ProductCarousel from "./Products_Components/Test_Carousel.jsx";
-import NFTHero from  "./Stores_Components/Stores_Hero.jsx"
+import NFTHero from  "./Stores_Components/Stores_Hero.jsx";
+import Products_Card from "./Products_Components/Products_List.jsx";
 
 
 export {
@@ -31,4 +32,5 @@ export {
     Products_List,
     ProductCarousel,
     NFTHero,
+    Products_Card,
 }

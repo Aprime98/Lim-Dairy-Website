@@ -1,4 +1,4 @@
-import {Navbar, Products_Hero, Products_List, About_Location, ProductCarousel
+import {Navbar, Products_Hero, About_Location, Products_Card, Products_List
     } from "../components"
 
 const Products = () => {
@@ -6,8 +6,7 @@ const Products = () => {
         <div>
             <Navbar />
             <Products_Hero />
-            <ProductCarousel />
-            {/*<Products_List />*/}
+            <Products_List />
             <About_Location />
         </div>
     )

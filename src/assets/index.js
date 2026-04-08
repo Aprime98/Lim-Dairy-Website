@@ -7,6 +7,12 @@ import R_Vanilla from "./Relish Vanilla.png"
 import esl from "./esl.png"
 import lala from "./Lala.png"
 import all_products from "./products.png"
+import cow_bran from "./Cow-Bran.jpg"
+import cow_poland from "./Cow-Poland.webp"
+import cow_salt from "./Cow-Salt.webp"
+import dairy_meal from "./Dairy-Meal.webp"
+import piglet_starter from "./Piglet-Starter.jpg"
+
 
 export{
     group_photo,
@@ -17,5 +23,10 @@ export{
     R_Vanilla,
     esl,
     lala,
-    all_products
+    all_products,
+    cow_bran,
+    cow_poland,
+    cow_salt,
+    dairy_meal,
+    piglet_starter,
 }

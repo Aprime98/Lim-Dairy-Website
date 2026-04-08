@@ -1,47 +1,69 @@
-import PropTypes from 'prop-types';
+import {
+    R_Strawberry,
+    packet_milk,
+    R_Vanilla,
+} from '../../assets'
 
-export default function ProductCard({
-                                        title,
-                                        description,
-                                        imageSrc,
-                                        imageAlt,
-                                        reverse = false
-                                    }) {
-    const flexDirection = reverse ? "md:flex-row-reverse" : "md:flex-row";
+export default function ProductCard() {
 
     return (
-        <div className={`flex flex-col ${flexDirection} items-center gap-8 md:gap-12 mb-16 md:mb-20`}>
-            <div className="md:w-1/2">
-                <div className="rounded-3xl p-4 sm:p-8 flex items-center justify-center h-64 sm:h-80 md:h-96">
-                    <img src={imageSrc} alt={imageAlt} className="h-3/4" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            {/*Packet-Milk product*/}
+            <div className={`flex flex-col items-center gap-8 md:gap-12 mb-16 md:mb-20`}>
+                <div className="md:w-1/2">
+                    <div className="rounded-3xl p-4 sm:p-8 flex items-center justify-center h-64 sm:h-80 md:h-96">
+                        <img src={packet_milk} alt="packet milk" className="h-3/4" />
+                    </div>
+                </div>
+                <div className="md:w-1/2 text-center md:text-left">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+                        Limuru Fresh Milk
+                    </h3>
+                    <p className="text-gray-600 text-base sm:text-lg mb-6">
+                        Wholesome, smooth milk packed fresh for dairy family nourishment
+                    </p>
                 </div>
             </div>
-            <div className="md:w-1/2 text-center md:text-left">
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-                    {title}
-                </h3>
-                <p className="text-gray-600 text-base sm:text-lg mb-6">
-                    {description}
-                </p>
-                {/*<div className="max-w-md mx-0 px-4 py-6">*/}
-                {/*    <div className="grid grid-cols-3 gap-4 text-center">*/}
-                {/*        {ingredients.map((ingredient, index) => (*/}
-                {/*            <div key={index} className="bg-gray-100 rounded-xl py-3 font-medium text-sm shadow">*/}
-                {/*                {ingredient}*/}
-                {/*            </div>*/}
-                {/*        ))}*/}
-                {/*    </div>*/}
-                {/*</div>*/}
+
+            {/*Relish Yoghurt Strawberry*/}
+            <div className={`flex flex-col items-center gap-8 md:gap-12 mb-16 md:mb-20`}>
+                <div className="md:w-1/2">
+                    <div className="rounded-3xl p-4 sm:p-8 flex items-center justify-center h-64 sm:h-80 md:h-96">
+                        <img src={R_Strawberry} alt="packet milk" className="h-3/4" />
+                    </div>
+                </div>
+                <div className="md:w-1/2 text-center md:text-left">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+                        Relish Yoghurt Strawberry
+                    </h3>
+                    <p className="text-gray-600 text-base sm:text-lg mb-6">
+                        Creamy, smooth yoghurt blended
+                        with sweet, juicy strawberry flavor __
+                        pure delight in every spoonful
+                    </p>
+                </div>
+            </div>
+
+            {/*Relish Yoghurt Vanilla*/}
+            <div className={`flex flex-col items-center gap-8 md:gap-12 mb-16 md:mb-20`}>
+                <div className="md:w-1/2">
+                    <div className="rounded-3xl p-4 sm:p-8 flex items-center justify-center h-64 sm:h-80 md:h-96">
+                        <img src={R_Vanilla} alt="packet milk" className="h-3/4" />
+                    </div>
+                </div>
+                <div className="md:w-1/2 text-center md:text-left">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+                        Relish Yoghurt Vanilla
+                    </h3>
+                    <p className="text-gray-600 text-base sm:text-lg mb-6">
+                        Creamy, smooth yoghurt blended
+                        with sweet, juicy vanilla flavor __
+                        pure delight in every spoonful
+                    </p>
+                </div>
             </div>
         </div>
     );
 }
 
-ProductCard.propTypes = {
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    imageSrc: PropTypes.string.isRequired,
-    imageAlt: PropTypes.string.isRequired,
-    ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
-    reverse: PropTypes.bool
-};
