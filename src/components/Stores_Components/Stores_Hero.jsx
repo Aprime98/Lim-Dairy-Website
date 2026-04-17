@@ -1,316 +1,531 @@
-import { useState, useEffect } from "react";
-import {cow_bran,
+import { useState } from 'react';
+import { Search, ShoppingBag, X } from 'lucide-react';
+import {
+    cow_bran,
     cow_poland,
     cow_salt,
     dairy_meal,
-    piglet_starter} from "../../assets"
+    piglet_starter,
+} from '../../assets';
 
-const allNfts = [
+/* ═══════════════════════════════════════════════════════════
+   PRODUCTS CONFIG
+   Add new products here — that's all you need to do!
+
+   category options: 'feeds' | 'minerals' | 'supplements' | 'other'
+═══════════════════════════════════════════════════════════ */
+const products = [
     {
         id: 1,
-        title: "Limda Bran",
-        price: "Ksh 1000",
-        accent: "#c084fc",
-        image: cow_bran,
+        title:    'Limda Bran',
+        price:    1000,
+        category: 'feeds',
+        tag:      'Best Seller',
+        desc:     'High-fibre bran feed formulated to boost milk production in dairy cattle.',
+        image:    cow_bran,
     },
     {
         id: 2,
-        title: "Limda Poland",
-        price: "Ksh 1200",
-        accent: "#22d3ee",
-        image: cow_poland,
+        title:    'Limda Poland',
+        price:    1200,
+        category: 'feeds',
+        tag:      null,
+        desc:     'Premium Poland-grade dairy feed blend for optimal cattle nutrition.',
+        image:    cow_poland,
     },
     {
         id: 3,
-        title: "Vital Maziwa",
-        price: "Ksh 650",
-        accent: "#fb923c",
-        image: cow_salt,
+        title:    'Vital Maziwa',
+        price:    650,
+        category: 'minerals',
+        tag:      'Popular',
+        desc:     'Essential mineral salt lick enriched with calcium and phosphorus.',
+        image:    cow_salt,
     },
     {
         id: 4,
-        title: "Limda DairyMeal",
-        price: "Ksh 1800",
-        accent: "#34d399",
-        image: dairy_meal,
+        title:    'Limda DairyMeal',
+        price:    1800,
+        category: 'feeds',
+        tag:      'Premium',
+        desc:     'Balanced dairy meal scientifically formulated for high-yielding cows.',
+        image:    dairy_meal,
     },
     {
         id: 5,
-        title: "Limda Piglets",
-        price: "Ksh 1100",
-        accent: "#f472b6",
-        image: piglet_starter,
+        title:    'Limda Piglets',
+        price:    1100,
+        category: 'feeds',
+        tag:      null,
+        desc:     'Starter feed for piglets packed with proteins and essential amino acids.',
+        image:    piglet_starter,
     },
 ];
 
-function NFTCard({ nft, featured }) {
-    const [hovered, setHovered] = useState(false);
+/* ── Helpers ── */
+const CATEGORIES = ['all', 'feeds', 'minerals', 'supplements', 'other'];
+const CAT_LABELS  = { all: 'All Products', feeds: 'Feeds', minerals: 'Minerals', supplements: 'Supplements', other: 'Other' };
 
-    // Details always shown on featured; on side cards only on hover
-    const showDetails = featured || hovered;
+const CAT_COLORS = {
+    feeds:       { color: '#4dbde8', bg: 'rgba(77,189,232,0.12)',  border: 'rgba(77,189,232,0.25)' },
+    minerals:    { color: '#d97706', bg: 'rgba(217,119,6,0.12)',   border: 'rgba(217,119,6,0.25)'  },
+    supplements: { color: '#22c55e', bg: 'rgba(34,197,94,0.12)',   border: 'rgba(34,197,94,0.25)'  },
+    other:       { color: '#a78bfa', bg: 'rgba(167,139,250,0.12)', border: 'rgba(167,139,250,0.25)' },
+};
 
-    return (
-        <div
-            className="relative overflow-hidden cursor-pointer rounded-2xl"
-            style={{
-                flex: featured ? "1.6" : "1",
-                minWidth: 0,
-                height: featured ? "540px" : "390px",
-                alignSelf: "center",
-                boxShadow: featured
-                    ? `0 0 48px 6px ${nft.accent}44, 0 24px 64px rgba(0,0,0,0.6)`
-                    : hovered
-                        ? `0 0 30px 3px ${nft.accent}33, 0 12px 40px rgba(0,0,0,0.4)`
-                        : "0 4px 20px rgba(0,0,0,0.3)",
-                border: featured ? `2px solid ${nft.accent}88` : "2px solid transparent",
-                transition: "box-shadow 0.4s ease, border-color 0.3s ease, transform 0.4s cubic-bezier(.22,1,.36,1)",
-                transform: hovered && !featured ? "scale(1.03)" : "scale(1)",
-                zIndex: featured ? 2 : 1,
-            }}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-        >
-            {/* Image */}
-            <img
-                src={nft.image}
-                alt={nft.title}
-                className="w-full h-full object-cover absolute inset-0"
-                style={{
-                    transition: "transform 0.6s cubic-bezier(.22,1,.36,1)",
-                    transform: hovered ? "scale(1.08)" : "scale(1)",
-                }}
-            />
+export default function StoresHero() {
+    const [category,  setCategory]  = useState('all');
+    const [search,    setSearch]    = useState('');
+    const [popup,     setPopup]     = useState(null);
 
-            {/* Gradient overlay — always dark at bottom for featured, reveals on hover for sides */}
-            <div
-                className="absolute inset-0"
-                style={{
-                    background: showDetails
-                        ? "linear-gradient(to top, rgba(0,0,0,0.93) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.05) 100%)"
-                        : "linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 60%)",
-                    transition: "background 0.4s ease",
-                }}
-            />
-
-            {/* Featured badge */}
-            {featured && (
-                <div
-                    className="absolute top-4 right-4 px-2 py-1 rounded-full text-xs font-black tracking-widest uppercase"
-                    style={{
-                        background: `${nft.accent}`,
-                        color: "#000",
-                    }}
-                >
-                    ★ Top
-                </div>
-            )}
-
-            {/* Detail panel — always visible on featured, hover-only on sides */}
-            <div
-                className="absolute bottom-0 left-0 right-0 p-5"
-                style={{
-                    transform: showDetails ? "translateY(0)" : "translateY(24px)",
-                    opacity: showDetails ? 1 : 0,
-                    transition: "transform 0.4s cubic-bezier(.22,1,.36,1), opacity 0.35s ease",
-                    pointerEvents: showDetails ? "auto" : "none",
-                }}
-            >
-                <h3
-                    className="text-white font-black leading-tight mb-3"
-                    style={{
-                        fontFamily: "'Bebas Neue', 'Impact', sans-serif",
-                        letterSpacing: "0.04em",
-                        fontSize: featured ? "1.6rem" : "1.2rem",
-                    }}
-                >
-                    {nft.title}
-                </h3>
-
-
-                <div className="flex items-center justify-between gap-2">
-                    <div>
-                        <p className="text-gray-400 uppercase tracking-widest mb-0.5" style={{ fontSize: "0.65rem" }}>Current Price</p>
-                        <p className="font-black" style={{ color: nft.accent, fontSize: featured ? "1.25rem" : "1rem" }}>{nft.price}</p>
-                    </div>
-
-                </div>
-            </div>
-
-            {/* Hover glow border for side cards */}
-            {!featured && (
-                <div
-                    className="absolute inset-0 rounded-2xl pointer-events-none"
-                    style={{
-                        border: `2px solid ${nft.accent}`,
-                        opacity: hovered ? 0.5 : 0,
-                        transition: "opacity 0.3s ease",
-                    }}
-                />
-            )}
-        </div>
-    );
-}
-
-// ─── Mobile single-card view ───────────────────────────────────────────────
-function MobileCard({ nft }) {
-    return (
-        <div
-            className="relative overflow-hidden rounded-2xl w-full"
-            style={{
-                height: "420px",
-                boxShadow: `0 0 40px 4px ${nft.accent}44, 0 20px 50px rgba(0,0,0,0.5)`,
-                border: `2px solid ${nft.accent}88`,
-            }}
-        >
-            <img src={nft.image} alt={nft.title} className="w-full h-full object-cover absolute inset-0" />
-
-            <div
-                className="absolute inset-0"
-                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.93) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.05) 100%)" }}
-            />
-
-
-            {/* Always-visible details */}
-            <div className="absolute bottom-0 left-0 right-0 p-5">
-                <h3
-                    className="text-white font-black mb-3"
-                    style={{ fontFamily: "'Bebas Neue', Impact, sans-serif", fontSize: "1.8rem", letterSpacing: "0.04em" }}
-                >
-                    {nft.title}
-                </h3>
-
-
-
-                <div className="flex items-center justify-between">
-                    <div>
-                        <p className="text-gray-400 uppercase tracking-widest mb-0.5" style={{ fontSize: "0.65rem" }}>Current Price</p>
-                        <p className="font-black text-xl" style={{ color: nft.accent }}>{nft.price}</p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    );
-}
-
-// ─── Main component ────────────────────────────────────────────────────────
-export default function NFTHero() {
-    const [startIndex, setStartIndex] = useState(0);
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        const check = () => setIsMobile(window.innerWidth < 640);
-        check();
-        window.addEventListener("resize", check);
-        return () => window.removeEventListener("resize", check);
-    }, []);
-
-    const VISIBLE = isMobile ? 1 : 3;
-    const totalSlides = allNfts.length - VISIBLE + 1;
-    const safeIndex = Math.min(startIndex, Math.max(0, totalSlides - 1));
-
-    const prev = () => setStartIndex((i) => Math.max(0, i - 1));
-    const next = () => setStartIndex((i) => Math.min(totalSlides - 1, i + 1));
-    const goTo = (i) => setStartIndex(i);
-
-    const visibleNfts = allNfts.slice(safeIndex, safeIndex + VISIBLE);
+    const filtered = products.filter(p => {
+        const matchCat    = category === 'all' || p.category === category;
+        const matchSearch = p.title.toLowerCase().includes(search.toLowerCase());
+        return matchCat && matchSearch;
+    });
 
     return (
-        <div className="min-h-screen w-full flex flex-col" style={{  fontFamily: "'DM Sans', sans-serif" }}>
+        <>
             <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap');
-        @keyframes pulse-glow {
-          0%, 100% { opacity: 0.4; }
-          50% { opacity: 0.8; }
-        }
-        .arrow-btn {
-          background: #2FA3E5;
-          border: 1px solid rgba(255,255,255,0.15);
-          backdrop-filter: blur(8px);
-          transition: background 0.2s, transform 0.2s, opacity 0.2s;
-        }
-        .arrow-btn:hover:not(:disabled) { background: rgba(255,255,255,0.2); transform: scale(1.1); }
-        .arrow-btn:disabled { opacity: 0.2; cursor: not-allowed; }
-      `}</style>
+                @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap');
 
-            {/* ── Header ── */}
-            <div
-                className="relative flex flex-col items-center justify-center pt-12 md:pt-24 pb-10 px-4 overflow-hidden"
-            >
-                <div className="absolute w-72 h-72 rounded-full pointer-events-none"
-                     style={{ top: "-60px", left: "15%", background: "radial-gradient(circle, #7c3aed33 0%, transparent 70%)", animation: "pulse-glow 4s ease-in-out infinite" }} />
-                <div className="absolute w-48 h-48 rounded-full pointer-events-none"
-                     style={{ top: "-10px", right: "20%", background: "radial-gradient(circle, #06b6d433 0%, transparent 70%)", animation: "pulse-glow 5s ease-in-out infinite 1s" }} />
+                /* ── Animations ── */
+                @keyframes fadeUp {
+                    from { opacity:0; transform:translateY(20px); }
+                    to   { opacity:1; transform:translateY(0); }
+                }
+                @keyframes popIn {
+                    from { opacity:0; transform:scale(0.94) translateY(14px); }
+                    to   { opacity:1; transform:scale(1) translateY(0); }
+                }
+                @keyframes shimmer {
+                    0%   { background-position: -600px 0; }
+                    100% { background-position:  600px 0; }
+                }
 
-                <div className="relative mb-6">
-                  <span className="px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
-                        style={{ background: "rgba(124,58,237,0.25)", border: "1px solid rgba(124,58,237,0.5)", color: "#2FA3E5" }}>
-                    Limuru Dairy Stores
-                  </span>
-                </div>
+                .st-animate { opacity:0; animation:fadeUp 0.65s cubic-bezier(0.22,1,0.36,1) forwards; }
+                .st-d1 { animation-delay:0.06s; }
+                .st-d2 { animation-delay:0.18s; }
+                .st-d3 { animation-delay:0.28s; }
+                .st-d4 { animation-delay:0.38s; }
 
-                <h1 className="text-dairyBlue text-center font-black uppercase leading-none mb-3 px-2"
-                    style={{ fontFamily: "'Bebas Neue', Impact, sans-serif", fontSize: "clamp(2.2rem, 9vw, 6rem)", letterSpacing: "0.04em" }}>
-                    Discover Our Top Items
-                </h1>
+                /* ── Root ── */
+                .st-root {
+                    background: #ffffff;
+                    background-image: radial-gradient(circle, rgba(77,189,232,0.07) 1px, transparent 1px);
+                    background-size: 28px 28px;
+                    position: relative; overflow: hidden;
+                    font-family: 'Outfit', sans-serif;
+                    padding: 88px 24px 96px;
+                    color: #111827;
+                }
+                .st-root::before {
+                    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+                    background: linear-gradient(90deg, #4dbde8, #22c55e, #d97706, #4dbde8);
+                    background-size: 200% 100%;
+                    animation: shimmer 4s linear infinite;
+                }
+                .st-blob { position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none; }
+                .st-blob-1 { width:500px;height:500px;background:rgba(77,189,232,0.08);top:-200px;right:-120px; }
+                .st-blob-2 { width:380px;height:380px;background:rgba(34,197,94,0.06);bottom:-140px;left:-80px; }
 
-                {/*<div className="absolute bottom-0 left-0 right-0 h-12 pointer-events-none"*/}
-                {/*     style={{ background: "linear-gradient(to bottom, transparent, #0a0a0f)" }} />*/}
-            </div>
+                /* ── Inner ── */
+                .st-inner { position:relative;z-index:1;max-width:1120px;margin:0 auto; }
 
-            {/* ── Cards ── */}
-            <div className="flex-1 px-4 sm:px-8 pb-24 pt-6 md:pt-24">
-                <div className="relative max-w-6xl mx-auto">
+                /* ── Header ── */
+                .st-header {
+                    display:flex; flex-direction:column; gap:20px;
+                    margin-bottom:40px;
+                }
+                @media(min-width:768px) {
+                    .st-header { flex-direction:row; align-items:flex-end; justify-content:space-between; }
+                }
 
-                    {isMobile ? (
-                        /* ── Mobile layout ── */
-                        <>
-                            <div className="flex justify-between items-center mb-4">
-                                <button className="arrow-btn w-10 h-10 rounded-full flex items-center justify-center text-blue-900 text-xl"
-                                        onClick={prev} disabled={safeIndex === 0}>‹</button>
-                                <span className="text-xs" style={{ color: "#000000" }}>
-                  {safeIndex + 1} / {allNfts.length}
-                </span>
-                                <button className="arrow-btn w-10 h-10 rounded-full flex items-center justify-center text-blue-900 text-xl"
-                                        onClick={next} disabled={safeIndex >= totalSlides - 1}>›</button>
+                .st-eyebrow {
+                    display:inline-flex; align-items:center; gap:8px;
+                    font-size:11px; font-weight:500; letter-spacing:0.18em;
+                    text-transform:uppercase; color:#6b7280; margin-bottom:10px;
+                }
+                .st-eyebrow-dot {
+                    width:6px;height:6px;border-radius:50%;background:#4dbde8;
+                    animation:pulse-st 2s ease-in-out infinite;
+                }
+                @keyframes pulse-st {
+                    0%,100%{opacity:1;transform:scale(1);}
+                    50%{opacity:0.4;transform:scale(0.7);}
+                }
+                .st-heading {
+                    font-family:'Cormorant Garamond',serif;
+                    font-weight:700; font-size:clamp(34px,5.5vw,62px);
+                    line-height:1.0; color:#111827; margin:0;
+                }
+                .st-heading em { font-style:italic; font-weight:400; color:#4dbde8; }
+
+                .st-count-badge {
+                    background:#111827; color:white;
+                    font-size:11px; font-weight:600; letter-spacing:0.10em; text-transform:uppercase;
+                    padding:8px 18px; border-radius:999px; white-space:nowrap;
+                    align-self:flex-start;
+                }
+                @media(min-width:768px) { .st-count-badge { align-self:auto; } }
+
+                /* ── Toolbar ── */
+                .st-toolbar {
+                    display:flex; flex-direction:column; gap:14px;
+                    margin-bottom:32px;
+                }
+                @media(min-width:640px) { .st-toolbar { flex-direction:row; align-items:center; } }
+
+                /* Search */
+                .st-search {
+                    position:relative; flex:1; max-width:320px;
+                }
+                .st-search-icon {
+                    position:absolute; left:14px; top:50%; transform:translateY(-50%);
+                    color:#9ca3af; pointer-events:none;
+                }
+                .st-search-input {
+                    width:100%; padding:10px 14px 10px 40px;
+                    border:1.5px solid #e5e7eb; border-radius:12px;
+                    font-family:'Outfit',sans-serif; font-size:13px; font-weight:400;
+                    color:#111827; background:white; outline:none;
+                    transition:border-color 0.2s ease, box-shadow 0.2s ease;
+                }
+                .st-search-input:focus {
+                    border-color:#4dbde8;
+                    box-shadow:0 0 0 3px rgba(77,189,232,0.12);
+                }
+                .st-search-input::placeholder { color:#9ca3af; }
+
+                /* Category filters */
+                .st-filters { display:flex; gap:8px; flex-wrap:wrap; }
+                .st-filter {
+                    font-size:12px; font-weight:500; letter-spacing:0.06em;
+                    padding:7px 16px; border-radius:999px; border:1.5px solid #e5e7eb;
+                    background:white; color:#6b7280; cursor:pointer;
+                    transition:all 0.2s ease; font-family:'Outfit',sans-serif;
+                    display:flex; align-items:center; gap:5px;
+                }
+                .st-filter:hover { border-color:#4dbde8; color:#4dbde8; }
+                .st-filter.active { background:#111827; color:white; border-color:#111827; }
+                .st-filter-dot { width:6px;height:6px;border-radius:50%;flex-shrink:0; }
+
+                /* ── Product grid ── */
+                .st-grid {
+                    display:grid;
+                    grid-template-columns:repeat(2, 1fr);
+                    gap:16px;
+                }
+                @media(min-width:640px)  { .st-grid { grid-template-columns:repeat(3, 1fr); } }
+                @media(min-width:900px)  { .st-grid { grid-template-columns:repeat(4, 1fr); } }
+                @media(min-width:1100px) { .st-grid { grid-template-columns:repeat(5, 1fr); } }
+
+                /* ── Product card ── */
+                .st-card {
+                    background:white; border:1px solid #f0f0f0;
+                    border-radius:18px; overflow:hidden;
+                    cursor:pointer; position:relative;
+                    transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+                    animation:fadeUp 0.4s ease forwards;
+                }
+                .st-card:hover {
+                    transform:translateY(-5px);
+                    box-shadow:0 16px 40px rgba(0,0,0,0.10);
+                    border-color:#e5e7eb;
+                }
+
+                /* Image */
+                .st-card-img-wrap {
+                    position:relative; overflow:hidden;
+                    height:160px; background:#f9fafb;
+                }
+                @media(min-width:640px) { .st-card-img-wrap { height:180px; } }
+
+                .st-card-img {
+                    width:100%; height:100%; object-fit:cover;
+                    transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);
+                }
+                .st-card:hover .st-card-img { transform:scale(1.07); }
+
+                /* Tag badge */
+                .st-card-tag {
+                    position:absolute; top:10px; left:10px;
+                    font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+                    padding:3px 9px; border-radius:999px;
+                    background:#111827; color:white;
+                }
+
+                /* Category dot */
+                .st-card-cat {
+                    position:absolute; top:10px; right:10px;
+                    width:8px;height:8px;border-radius:50%;
+                    box-shadow:0 0 0 2px white;
+                }
+
+                /* Card body */
+                .st-card-body { padding:14px 16px 16px; }
+                .st-card-title {
+                    font-family:'Cormorant Garamond',serif;
+                    font-weight:700; font-size:16px; line-height:1.2;
+                    color:#111827; margin:0 0 4px;
+                }
+                @media(min-width:640px) { .st-card-title { font-size:18px; } }
+
+                .st-card-cat-label {
+                    font-size:10px; font-weight:500; letter-spacing:0.12em;
+                    text-transform:uppercase; opacity:0.50; display:block; margin-bottom:10px;
+                }
+                .st-card-price {
+                    font-family:'Cormorant Garamond',serif;
+                    font-weight:700; font-size:20px; color:#111827;
+                }
+                .st-card-price span {
+                    font-family:'Outfit',sans-serif;
+                    font-size:11px; font-weight:400; color:#9ca3af; margin-left:2px;
+                }
+
+                /* View details cue */
+                .st-card-cta {
+                    display:flex; align-items:center; gap:4px;
+                    font-size:11px; font-weight:500; letter-spacing:0.08em;
+                    text-transform:uppercase; color:#9ca3af; margin-top:10px;
+                    transition:color 0.2s ease;
+                }
+                .st-card:hover .st-card-cta { color:#4dbde8; }
+
+                /* ── Empty ── */
+                .st-empty {
+                    grid-column:1/-1; text-align:center; padding:56px 24px;
+                    background:white; border:1px dashed #e5e7eb; border-radius:16px;
+                    font-size:14px; font-weight:300; color:#9ca3af;
+                }
+
+                /* ══════════════════════════
+                   POPUP MODAL
+                ══════════════════════════ */
+                .st-overlay {
+                    position:fixed; inset:0; z-index:999;
+                    background:rgba(0,0,0,0.50); backdrop-filter:blur(5px);
+                    display:flex; align-items:center; justify-content:center; padding:20px;
+                    animation:fadeUp 0.2s ease forwards;
+                }
+                .st-modal {
+                    background:white; border-radius:24px;
+                    width:100%; max-width:520px; max-height:92vh; overflow-y:auto;
+                    position:relative;
+                    box-shadow:0 40px 80px rgba(0,0,0,0.20);
+                    animation:popIn 0.3s cubic-bezier(0.22,1,0.36,1) forwards;
+                }
+                .st-modal-img {
+                    width:100%; height:260px; object-fit:cover;
+                    border-radius:24px 24px 0 0;
+                    display:block;
+                }
+                .st-modal-close {
+                    position:absolute; top:14px; right:14px;
+                    width:36px; height:36px; border-radius:50%;
+                    background:rgba(0,0,0,0.40); border:none; cursor:pointer;
+                    display:flex; align-items:center; justify-content:center; color:white;
+                    transition:background 0.2s ease;
+                }
+                .st-modal-close:hover { background:rgba(0,0,0,0.60); }
+
+                .st-modal-body { padding:24px 28px 32px; }
+
+                .st-modal-cat {
+                    display:inline-flex; align-items:center; gap:6px;
+                    font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase;
+                    padding:4px 12px; border-radius:999px; border:1px solid; margin-bottom:14px;
+                }
+                .st-modal-title {
+                    font-family:'Cormorant Garamond',serif;
+                    font-weight:700; font-size:clamp(26px,4vw,34px);
+                    line-height:1.1; color:#111827; margin:0 0 8px;
+                }
+                .st-modal-desc {
+                    font-size:14px; font-weight:300; line-height:1.78;
+                    color:#4b5563; margin:0 0 24px;
+                }
+                .st-modal-footer {
+                    display:flex; align-items:center; justify-content:space-between;
+                    flex-wrap:wrap; gap:12px;
+                    background:#f9fafb; border-radius:14px; padding:18px 22px;
+                }
+                .st-modal-price {
+                    font-family:'Cormorant Garamond',serif;
+                    font-weight:700; font-size:32px; color:#111827; line-height:1;
+                }
+                .st-modal-price small {
+                    font-family:'Outfit',sans-serif;
+                    font-size:12px; font-weight:400; color:#9ca3af; display:block; margin-bottom:2px;
+                }
+                .st-modal-enquire {
+                    display:inline-flex; align-items:center; gap:8px;
+                    font-family:'Outfit',sans-serif; font-size:12px; font-weight:600;
+                    letter-spacing:0.10em; text-transform:uppercase;
+                    background:#111827; color:white;
+                    padding:12px 22px; border-radius:10px; border:none;
+                    cursor:pointer; text-decoration:none;
+                    transition:background 0.2s, transform 0.15s ease;
+                }
+                .st-modal-enquire:hover { background:#1f2937; transform:translateY(-1px); }
+            `}</style>
+
+            <section className="st-root">
+                <div className="st-blob st-blob-1" />
+                <div className="st-blob st-blob-2" />
+
+                <div className="st-inner">
+
+                    {/* ── Header ── */}
+                    <div className="st-header st-animate st-d1">
+                        <div>
+                            <p className="st-eyebrow">
+                                <span className="st-eyebrow-dot" />
+                                Limuru Dairy Farmers Store
+                            </p>
+                            <h2 className="st-heading">
+                                Farm <em>Inputs</em> &amp; Feeds
+                            </h2>
+                        </div>
+                        <span className="st-count-badge">
+                            {products.length} Products Available
+                        </span>
+                    </div>
+
+                    {/* ── Toolbar ── */}
+                    <div className="st-toolbar st-animate st-d2">
+
+                        {/* Search */}
+                        <div className="st-search">
+                            <Search size={14} className="st-search-icon" />
+                            <input
+                                className="st-search-input"
+                                placeholder="Search products..."
+                                value={search}
+                                onChange={e => setSearch(e.target.value)}
+                            />
+                        </div>
+
+                        {/* Category filters */}
+                        <div className="st-filters">
+                            {CATEGORIES.map(cat => {
+                                const meta  = CAT_COLORS[cat] || {};
+                                const count = cat === 'all'
+                                    ? products.length
+                                    : products.filter(p => p.category === cat).length;
+                                if (cat !== 'all' && count === 0) return null;
+                                return (
+                                    <button
+                                        key={cat}
+                                        className={`st-filter ${category === cat ? 'active' : ''}`}
+                                        onClick={() => setCategory(cat)}
+                                    >
+                                        {cat !== 'all' && (
+                                            <span
+                                                className="st-filter-dot"
+                                                style={{ background: meta.color }}
+                                            />
+                                        )}
+                                        {CAT_LABELS[cat]}
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </div>
+
+                    {/* ── Grid ── */}
+                    <div className="st-grid st-animate st-d3">
+                        {filtered.length === 0 ? (
+                            <div className="st-empty">
+                                No products match your search — try a different keyword.
                             </div>
-                            <MobileCard nft={visibleNfts[0]} />
-                        </>
-                    ) : (
-                        /* ── Desktop layout ── */
-                        <>
-                            <button
-                                className="arrow-btn absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 z-20 w-10 h-10 rounded-full flex items-center justify-center text-white text-xl"
-                                onClick={prev} disabled={safeIndex === 0}>‹</button>
+                        ) : (
+                            filtered.map(product => {
+                                const meta = CAT_COLORS[product.category] || CAT_COLORS.other;
+                                return (
+                                    <div
+                                        key={product.id}
+                                        className="st-card"
+                                        onClick={() => setPopup(product)}
+                                    >
+                                        <div className="st-card-img-wrap">
+                                            <img src={product.image} alt={product.title} className="st-card-img" />
+                                            {product.tag && (
+                                                <span className="st-card-tag">{product.tag}</span>
+                                            )}
+                                            <span
+                                                className="st-card-cat"
+                                                style={{ background: meta.color }}
+                                                title={CAT_LABELS[product.category]}
+                                            />
+                                        </div>
+                                        <div className="st-card-body">
+                                            <h3 className="st-card-title">{product.title}</h3>
+                                            <span className="st-card-cat-label">{CAT_LABELS[product.category]}</span>
+                                            <div className="st-card-price">
+                                                Ksh {product.price.toLocaleString()}
+                                                <span>/ bag</span>
+                                            </div>
+                                            <div className="st-card-cta">
+                                                View details →
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })
+                        )}
+                    </div>
 
-                            {/* Cards row — center card taller, aligned to center */}
-                            <div className="flex gap-4 items-center w-full" style={{ minHeight: "560px" }}>
-                                {visibleNfts.map((nft, i) => (
-                                    <NFTCard key={nft.id} nft={nft} featured={i === 1} />
-                                ))}
+                </div>
+            </section>
+
+            {/* ══════════ POPUP MODAL ══════════ */}
+            {popup && (() => {
+                const meta = CAT_COLORS[popup.category] || CAT_COLORS.other;
+                return (
+                    <div className="st-overlay" onClick={() => setPopup(null)}>
+                        <div className="st-modal" onClick={e => e.stopPropagation()}>
+
+                            <img src={popup.image} alt={popup.title} className="st-modal-img" />
+
+                            <button className="st-modal-close" onClick={() => setPopup(null)}>
+                                <X size={16} />
+                            </button>
+
+                            <div className="st-modal-body">
+                                <span
+                                    className="st-modal-cat"
+                                    style={{ background:meta.bg, color:meta.color, borderColor:meta.border }}
+                                >
+                                    <span style={{ width:6,height:6,borderRadius:'50%',background:meta.color,display:'inline-block' }} />
+                                    {CAT_LABELS[popup.category]}
+                                </span>
+
+                                <h2 className="st-modal-title">{popup.title}</h2>
+                                <p className="st-modal-desc">{popup.desc}</p>
+
+                                <div className="st-modal-footer">
+                                    <div>
+                                        <div className="st-modal-price">
+                                            <small>Price per bag</small>
+                                            Ksh {popup.price.toLocaleString()}
+                                        </div>
+                                    </div>
+                                    <a
+                                        href={`mailto:limurudairy@gmail.com?subject=Enquiry: ${popup.title}`}
+                                        className="st-modal-enquire"
+                                    >
+                                        <ShoppingBag size={14} />
+                                        Enquire Now
+                                    </a>
+                                </div>
                             </div>
 
-                            <button
-                                className="arrow-btn absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 z-20 w-10 h-10 rounded-full flex items-center justify-center text-white text-xl"
-                                onClick={next} disabled={safeIndex >= totalSlides - 1}>›</button>
-                        </>
-                    )}
-                </div>
-
-                {/* Dots */}
-                <div className="flex justify-center gap-2 mt-6">
-                    {Array.from({ length: totalSlides }).map((_, i) => (
-                        <div key={i} onClick={() => goTo(i)} className="rounded-full cursor-pointer"
-                             style={{
-                                 width: i === safeIndex ? "24px" : "8px",
-                                 height: "8px",
-                                 background: i === safeIndex ? "#a78bfa" : "rgba(255,255,255,0.2)",
-                                 transition: "width 0.3s ease, background 0.3s ease",
-                             }}
-                        />
-                    ))}
-                </div>
-            </div>
-        </div>
+                        </div>
+                    </div>
+                );
+            })()}
+        </>
     );
 }

@@ -14,6 +14,8 @@ import Products_List from "./Products_Components/Products_List.jsx";
 import ProductCarousel from "./Products_Components/Test_Carousel.jsx";
 import NFTHero from  "./Stores_Components/Stores_Hero.jsx";
 import Products_Card from "./Products_Components/Products_List.jsx";
+import AboutVisionGallery from "./About_Components/AboutVisionGallery.jsx";
+import About_Opportunities from "./About_Components/About_Opportunities.jsx";
 
 
 export {
@@ -33,4 +35,6 @@ export {
     ProductCarousel,
     NFTHero,
     Products_Card,
+    AboutVisionGallery,
+    About_Opportunities
 }
