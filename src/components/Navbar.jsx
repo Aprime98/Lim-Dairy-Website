@@ -194,7 +194,7 @@ export default function Navbar() {
 
                     {/* Logo */}
                     <a href="/" className="nav-logo">
-                        <img src="/logo.png" alt="Limuru Fresh Dairy" />
+                        <img src="/Logo1.png" alt="Limuru Fresh Dairy" />
                     </a>
 
                     {/* Desktop links */}

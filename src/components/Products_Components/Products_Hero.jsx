@@ -202,45 +202,43 @@ export default function ProductsHero() {
                     {/* Heading */}
                     <div className="ph-animate ph-d2">
                         <h1 className="ph-heading">
-                            Discover naturally made<br />
-                            dairy products,{" "}
-                            <span className="ph-pill-blue">healthy</span>,<br />
-                            <span className="ph-pill-green">always</span>{" "}
-                            delicious
+                            Discover <span className="ph-pill-blue">naturally</span> made<br />
+                            Dairy Products!
+                            {/*<span className="ph-pill-green">dairy products</span>{" "}*/}
                         </h1>
 
                         <div className="ph-rule" />
                     </div>
 
-                    {/* Body + tags */}
-                    <div className="ph-animate ph-d3">
-                        <p className="ph-body">
-                            Our dairy products are crafted with care using fresh natural
-                            ingredients sourced from local farms. Every sip and bite
-                            delivers wholesome nutrition and rich, delicious flavor
-                            you can trust.
-                        </p>
+                    {/*/!* Body + tags *!/*/}
+                    {/*<div className="ph-animate ph-d3">*/}
+                    {/*    <p className="ph-body">*/}
+                    {/*        Our dairy products are crafted with care using fresh natural*/}
+                    {/*        ingredients sourced from local farms. Every sip and bite*/}
+                    {/*        delivers wholesome nutrition and rich, delicious flavor*/}
+                    {/*        you can trust.*/}
+                    {/*    </p>*/}
 
-                        {/* Trust chips */}
-                        <div className="ph-tags">
-                            <span className="ph-tag">
-                                <span className="ph-tag-dot ph-tag-dot-blue" />
-                                No Additives
-                            </span>
-                            <span className="ph-tag">
-                                <span className="ph-tag-dot ph-tag-dot-green" />
-                                Locally Sourced
-                            </span>
-                            <span className="ph-tag">
-                                <span className="ph-tag-dot ph-tag-dot-amber" />
-                                Farm Fresh
-                            </span>
-                            <span className="ph-tag">
-                                <span className="ph-tag-dot ph-tag-dot-blue" />
-                                Quality Certified
-                            </span>
-                        </div>
-                    </div>
+                    {/*    /!* Trust chips *!/*/}
+                    {/*    <div className="ph-tags">*/}
+                    {/*        <span className="ph-tag">*/}
+                    {/*            <span className="ph-tag-dot ph-tag-dot-blue" />*/}
+                    {/*            No Additives*/}
+                    {/*        </span>*/}
+                    {/*        <span className="ph-tag">*/}
+                    {/*            <span className="ph-tag-dot ph-tag-dot-green" />*/}
+                    {/*            Locally Sourced*/}
+                    {/*        </span>*/}
+                    {/*        <span className="ph-tag">*/}
+                    {/*            <span className="ph-tag-dot ph-tag-dot-amber" />*/}
+                    {/*            Farm Fresh*/}
+                    {/*        </span>*/}
+                    {/*        <span className="ph-tag">*/}
+                    {/*            <span className="ph-tag-dot ph-tag-dot-blue" />*/}
+                    {/*            Quality Certified*/}
+                    {/*        </span>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
 
                 </div>
             </section>

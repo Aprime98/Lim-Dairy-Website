@@ -81,7 +81,7 @@ export default function Location() {
                 }
 
                 .loc-logo-ring {
-                    width: 80px; height: 80px;
+                    width: 90px; height: 90px;
                     border-radius: 50%;
                     background: rgba(255,255,255,0.18);
                     border: 1.5px solid rgba(255,255,255,0.30);
@@ -90,7 +90,7 @@ export default function Location() {
                     justify-content: center;
                     backdrop-filter: blur(4px);
                 }
-                .loc-logo-ring img { height:52px;width:auto; }
+                .loc-logo-ring img { height:54px;width:72px; }
 
                 .loc-heading {
                     font-family: 'Playfair Display', serif;
@@ -217,7 +217,7 @@ export default function Location() {
                     <div className="loc-logo-col">
                         <a href="/">
                             <div className="loc-logo-ring">
-                                <img src="/logo.png" alt="Limuru Fresh Dairy" />
+                                <img src="/Logo1.png" className="" alt="Limuru Fresh Dairy" />
                             </div>
                         </a>
                         <h2 className="loc-heading">Our Location</h2>

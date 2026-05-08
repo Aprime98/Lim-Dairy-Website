@@ -6,8 +6,8 @@ const Home = () => {
             <Navbar />
             <div className="">
                 <Home_Hero />
-                <Home_About />
-                <Home_Products />
+                {/*<Home_About />*/}
+                {/*<Home_Products />*/}
                 <Home_Map />
                 <Home_Footer />
             </div>

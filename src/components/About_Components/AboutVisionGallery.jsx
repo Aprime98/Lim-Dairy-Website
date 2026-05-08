@@ -426,56 +426,6 @@ export default function VisionGallery() {
                     </div>
 
 
-                    {/* ════ HISTORY TIMELINE ════ */}
-                    <div className="vg-history-wrap vg-animate vg-d1">
-                        <div className="vg-history-header">
-                            <h3 className="vg-history-title">Limuru Dairy <em>History</em></h3>
-                            <span className="vg-history-badge">Est. 1962</span>
-                        </div>
-
-                        <div className="vg-timeline">
-                            <div className="vg-timeline-grid">
-
-                                {/* Left column */}
-                                <div className="vg-timeline-col">
-                                    <div className="vg-timeline-item">
-                                        <span className="vg-timeline-year">1962</span>
-                                        <p className="vg-timeline-text">Limuru Dairy Farmers Co-operative Society was registered under the Co-operative Act on 28th April 1962.</p>
-                                    </div>
-                                    <div className="vg-timeline-item">
-                                        <span className="vg-timeline-year">1963</span>
-                                        <p className="vg-timeline-text">Operations started in March with just seven members. UNICEF supplied additional milk cans the same year.</p>
-                                    </div>
-                                    <div className="vg-timeline-item">
-                                        <span className="vg-timeline-year">1964</span>
-                                        <p className="vg-timeline-text">Management opened a store for resale of farm inputs, feeds, and milk cans at fair prices for farmers.</p>
-                                    </div>
-                                    <div className="vg-timeline-item">
-                                        <span className="vg-timeline-year">1967</span>
-                                        <p className="vg-timeline-text">The society purchased its own land and acquired its first vehicle.</p>
-                                    </div>
-                                </div>
-
-                                {/* Right column */}
-                                <div className="vg-timeline-col">
-                                    <div className="vg-timeline-item">
-                                        <span className="vg-timeline-year">1984</span>
-                                        <p className="vg-timeline-text">Construction of the society's head office began, completed in November 1986.</p>
-                                    </div>
-                                    <div className="vg-timeline-item">
-                                        <span className="vg-timeline-year">1987</span>
-                                        <p className="vg-timeline-text">With member and government approval, the society began offering Artificial Insemination and Clinical services.</p>
-                                    </div>
-                                    <div className="vg-timeline-item">
-                                        <span className="vg-timeline-year">1997</span>
-                                        <p className="vg-timeline-text">Limuru Milk Processor began milk processing under the <em style={{color:'#d97706',fontStyle:'italic'}}>Limuru Fresh</em> brand.</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
                     {/* ── Two column layout ── */}
                     <div className="vg-layout">
 
@@ -538,6 +488,58 @@ export default function VisionGallery() {
                         </div>
 
                     </div>
+
+                    {/* ════ HISTORY TIMELINE ════ */}
+                    <div className="vg-history-wrap vg-animate vg-d1">
+                        <div className="vg-history-header">
+                            <h3 className="vg-history-title">Limuru Dairy <em>History</em></h3>
+                            <span className="vg-history-badge">Est. 1962</span>
+                        </div>
+
+                        <div className="vg-timeline">
+                            <div className="vg-timeline-grid">
+
+                                {/* Left column */}
+                                <div className="vg-timeline-col">
+                                    <div className="vg-timeline-item">
+                                        <span className="vg-timeline-year">1962</span>
+                                        <p className="vg-timeline-text">Limuru Dairy Farmers Co-operative Society was registered under the Co-operative Act on 28th April 1962.</p>
+                                    </div>
+                                    <div className="vg-timeline-item">
+                                        <span className="vg-timeline-year">1963</span>
+                                        <p className="vg-timeline-text">Operations started in March with just seven members. UNICEF supplied additional milk cans the same year.</p>
+                                    </div>
+                                    <div className="vg-timeline-item">
+                                        <span className="vg-timeline-year">1964</span>
+                                        <p className="vg-timeline-text">Management opened a store for resale of farm inputs, feeds, and milk cans at fair prices for farmers.</p>
+                                    </div>
+                                    <div className="vg-timeline-item">
+                                        <span className="vg-timeline-year">1967</span>
+                                        <p className="vg-timeline-text">The society purchased its own land and acquired its first vehicle.</p>
+                                    </div>
+                                </div>
+
+                                {/* Right column */}
+                                <div className="vg-timeline-col">
+                                    <div className="vg-timeline-item">
+                                        <span className="vg-timeline-year">1984</span>
+                                        <p className="vg-timeline-text">Construction of the society's head office began, completed in November 1986.</p>
+                                    </div>
+                                    <div className="vg-timeline-item">
+                                        <span className="vg-timeline-year">1987</span>
+                                        <p className="vg-timeline-text">With member and government approval, the society began offering Artificial Insemination and Clinical services.</p>
+                                    </div>
+                                    <div className="vg-timeline-item">
+                                        <span className="vg-timeline-year">1997</span>
+                                        <p className="vg-timeline-text">Limuru Milk Processor began milk processing under the <em style={{color:'#d97706',fontStyle:'italic'}}>Limuru Fresh</em> brand.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </section>
 
