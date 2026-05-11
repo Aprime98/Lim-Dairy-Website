@@ -90,7 +90,7 @@ export default function Location() {
                     justify-content: center;
                     backdrop-filter: blur(4px);
                 }
-                .loc-logo-ring img { height:54px;width:72px; }
+                .loc-logo-ring img { height:49px;width:70px; }
 
                 .loc-heading {
                     font-family: 'Playfair Display', serif;

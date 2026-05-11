@@ -22,7 +22,7 @@ export default function ProductsHero() {
                     background: #ffffff;
                     position: relative;
                     overflow: hidden;
-                    padding: 100px 24px 96px;
+                    padding: 30px 24px 96px;
                     font-family: 'Outfit', sans-serif;
                 }
 

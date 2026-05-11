@@ -251,7 +251,7 @@ export default function Opportunities() {
 
                 /* ── Notice ── */
                 .op-notice {
-                    display:flex; align-items:flex-start; gap:10px;
+                    display:flex; align-items:flex-center; gap:10px; justify-content:center;
                     background:#fffbeb; border:1px solid rgba(217,119,6,0.25);
                     border-radius:12px; padding:14px 18px; margin-top:24px;
                     font-size:12px; font-weight:300; color:#78350f; line-height:1.65;
@@ -439,7 +439,6 @@ export default function Opportunities() {
                         <AlertCircle size={14} style={{ flexShrink:0, marginTop:2, color:'#d97706' }} />
                         <span>
                             Send applications to <strong>limurudairy@gmail.com</strong> quoting the reference number.
-                            Only shortlisted candidates will be contacted. Limuru Dairy is an equal opportunity employer.
                         </span>
                     </div>
 
@@ -510,18 +509,18 @@ export default function Opportunities() {
                                         )}
                                     </div>
 
-                                    {closed ? (
-                                        <span className={`op-modal-apply op-modal-apply-closed`}>
-                                            Applications Closed
-                                        </span>
-                                    ) : (
-                                        <a
-                                            href={`mailto:limurudairy@gmail.com?subject=Application: ${popup.title} (${popup.ref})`}
-                                            className="op-modal-apply"
-                                        >
-                                            Apply Now <ChevronRight size={14} />
-                                        </a>
-                                    )}
+                                    {/*{closed ? (*/}
+                                    {/*    <span className={`op-modal-apply op-modal-apply-closed`}>*/}
+                                    {/*        Applications Closed*/}
+                                    {/*    </span>*/}
+                                    {/*) : (*/}
+                                    {/*    <a*/}
+                                    {/*        href={`mailto:limurudairy@gmail.com?subject=Application: ${popup.title} (${popup.ref})`}*/}
+                                    {/*        className="op-modal-apply"*/}
+                                    {/*    >*/}
+                                    {/*        Apply Now <ChevronRight size={14} />*/}
+                                    {/*    </a>*/}
+                                    {/*)}*/}
                                 </div>
 
                             </div>

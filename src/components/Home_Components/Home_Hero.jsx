@@ -328,7 +328,7 @@ export default function Home_Hero() {
                     line-height: 1.3;
                 }
                 .hero-freshness-sub {
-                    font-size: 9px; font-weight: 300; color: #6b7280; letter-spacing: 0.04em;
+                    font-size: 9px; font-weight: 300; color: #7a8291; letter-spacing: 0.04em;
                 }
 
                 /* The actual product image */
@@ -467,8 +467,8 @@ export default function Home_Hero() {
                         <div className="hero-freshness">
                             <div className="hero-freshness-dot" />
                             <div>
-                                <div className="hero-freshness-text">Farm Fresh Daily</div>
-                                <div className="hero-freshness-sub">RELISH YOGHURT RANGE</div>
+                                <div className="hero-freshness-text">Farm Fresh</div>
+                                <div className="hero-freshness-sub">RELISH PRODUCTS RANGE</div>
                             </div>
                         </div>
 

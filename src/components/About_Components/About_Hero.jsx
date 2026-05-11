@@ -25,7 +25,7 @@ export default function Hero() {
                     background: #ffffff;
                     position: relative;
                     overflow: hidden;
-                    padding: 108px 24px 96px;
+                    padding: 30px 24px 96px;
                     font-family: 'Outfit', sans-serif;
                 }
 
@@ -209,7 +209,7 @@ export default function Hero() {
                     </div>
 
                     {/* Contact */}
-                    <div className="ah-animate ah-d4">
+                    <div className="ah-animate ah-d4 hidden lg:block">
                         <div className="ah-contact">
                             <div className="ah-contact-item">
                                 <span className="ah-contact-icon ah-icon-phone">

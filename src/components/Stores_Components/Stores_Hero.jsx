@@ -512,13 +512,13 @@ export default function StoresHero() {
                                             Ksh {popup.price.toLocaleString()}
                                         </div>
                                     </div>
-                                    <a
-                                        href={`mailto:limurudairy@gmail.com?subject=Enquiry: ${popup.title}`}
-                                        className="st-modal-enquire"
-                                    >
-                                        <ShoppingBag size={14} />
-                                        Enquire Now
-                                    </a>
+                                    {/*<a*/}
+                                    {/*    href={`mailto:limurudairy@gmail.com?subject=Enquiry: ${popup.title}`}*/}
+                                    {/*    className="st-modal-enquire"*/}
+                                    {/*>*/}
+                                    {/*    <ShoppingBag size={14} />*/}
+                                    {/*    Enquire Now*/}
+                                    {/*</a>*/}
                                 </div>
                             </div>
 
