@@ -15,6 +15,15 @@ export default function ProductCard() {
     const prev = () => { setCurrent((prev) => (prev - 1 + total) % total); setSelectedQty(0); };
     const goTo = (i) => { setCurrent(i); setSelectedQty(0); };
 
+    const [touchStartX, setTouchStartX] = useState(null);
+    const handleTouchStart = (e) => setTouchStartX(e.touches[0].clientX);
+    const handleTouchEnd   = (e) => {
+        if (touchStartX === null) return;
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) diff > 0 ? next() : prev();
+        setTouchStartX(null);
+    };
+
     const btnClass      = ['btn-milk','btn-strawberry','btn-vanilla','btn-lala'][current];
 
 
@@ -22,31 +31,30 @@ export default function ProductCard() {
     const quantities = [
         /* Packet Milk */
         [
-            { size: '250ml', price: 350  },
-            { size: '500ml', price: 500  },
+            { size: '250ml Carton', price: 420  },
+            { size: '500ml Carton', price: 530  },
         ],
         /* Relish Yoghurt Strawberry */
         [
-            { size: '100ml', price: 30  },
-            { size: '250ml', price: 50  },
-            { size: '500ml', price: 90  },
-            { size: '1L',    price: 150 },
-            { size: '2L',    price: 400 },
+            { size: '100ml Tray', price: 30  },
+            { size: '250ml Tray', price: 50  },
+            { size: '500ml Tray', price: 90  },
+            { size: '1L Bottle',    price: 150 },
+            { size: '2L Bottle',    price: 400 },
         ],
         /* Relish Yoghurt Vanilla */
         [
-            { size: '100ml', price: 30  },
-            { size: '250ml', price: 50  },
-            { size: '500ml', price: 90  },
-            { size: '1L',    price: 150 },
-            { size: '2L',    price: 400 },
+            { size: '100ml Tray', price: 30  },
+            { size: '250ml Tray', price: 50  },
+            { size: '500ml Tray', price: 90  },
+            { size: '1L Bottle',    price: 150 },
+            { size: '2L Bottle',    price: 400 },
         ],
         /* Relish Lala */
         [
-            { size: '250ml', price: 50  },
-            { size: '500ml', price: 90  },
-            { size: '1L',    price: 150 },
-            { size: '2L',    price: 400 },
+            { size: '500ml Bottle', price: 90  },
+            { size: '1L Bottle',    price: 150 },
+            { size: '2L Bottle',    price: 400 },
         ],
     ];
 
@@ -147,7 +155,7 @@ export default function ProductCard() {
                 /* ── Slide inner layout ── */
                 .slide-inner { display:flex;flex-direction:column;align-items:center;gap:24px;padding:60px 48px; }
                 @media(min-width:768px){ .slide-inner { flex-direction:row; } }
-                .slide-img-wrap { flex:1;display:flex;align-items:center;justify-content:center;min-height:240px;position:relative; }
+                .slide-img-wrap { flex:1;display:flex;align-items:center;justify-content:center; min-height:250px;position:relative; }
                 .slide-text { flex:1;text-align:left; }
 
                 /* ══════════════════════════════
@@ -239,12 +247,15 @@ export default function ProductCard() {
 
                 <div className="card-outer">
                     <div className="overflow-hidden">
-                        <div className="carousel-track max-h-[750px]" style={{ transform:`translateX(-${current * 100}%)` }}>
+                        <div className="carousel-track max-h-200 lg:max-h-125
+                         onTouchStart={handleTouchStart}
+                         onTouchEnd={handleTouchEnd}
+                         " style={{ transform:`translateX(-${current * 100}%)` }}>
 
                             {/* ══════════════════════════
                                 SLIDE 1 — Packet Milk
                             ══════════════════════════ */}
-                            <div className="carousel-slide slide-milk" style={{ position:'relative',overflow:'hidden' }}>
+                            <div className="carousel-slide slide-milk " style={{ position:'relative',overflow:'hidden' }}>
                                 <div className="blob blob-milk-1" /><div className="blob blob-milk-2" />
                                 <div className="ring ring-milk" style={{ width:300,height:300,top:-80,right:-80 }} />
                                 <div className="ring ring-milk" style={{ width:180,height:180,bottom:-50,left:20 }} />
@@ -358,7 +369,7 @@ export default function ProductCard() {
                                 <div className="ring ring-lala" style={{ width:180,height:180,bottom:-50,left:20 }} />
                                 <div className="slide-inner">
                                     <div className="slide-img-wrap">
-                                        <img src={lala} alt="Relish Lala" className="product-img img-lala lg:h-85 h-64" style={{ objectFit:'contain',position:'relative',zIndex:1 }} />
+                                        <img src={lala} alt="Relish Lala" className="product-img img-lala h-64 lg:h-85" style={{ objectFit:'contain',position:'relative',zIndex:1 }} />
                                     </div>
                                     <div className="slide-text">
                                         <span className="product-badge badge-lala">Naturally Fermented</span>

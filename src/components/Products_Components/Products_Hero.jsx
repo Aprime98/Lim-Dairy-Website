@@ -22,7 +22,7 @@ export default function ProductsHero() {
                     background: #ffffff;
                     position: relative;
                     overflow: hidden;
-                    padding: 30px 24px 96px;
+                    padding: 30px 24px 40px;
                     font-family: 'Outfit', sans-serif;
                 }
 
@@ -76,11 +76,11 @@ export default function ProductsHero() {
                     display: inline-flex;
                     align-items: center;
                     gap: 10px;
-                    font-size: 11px;
+                    font-size: 13px;
                     font-weight: 500;
                     letter-spacing: 0.18em;
                     text-transform: uppercase;
-                    color: #6b7280;
+                    color: #606875;
                     margin-bottom: 28px;
                 }
                 .ph-eyebrow-line {
@@ -193,22 +193,22 @@ export default function ProductsHero() {
                     {/* Eyebrow */}
                     <div className="ph-animate ph-d1">
                         <p className="ph-eyebrow">
-                            <span className="ph-eyebrow-line" />
-                            Our Products
+                            <span className="ph-eyebrow-line sm:text-[11px]" />
+                            Limuru Dairy Products
                             <span className="ph-eyebrow-line" />
                         </p>
                     </div>
 
                     {/* Heading */}
-                    <div className="ph-animate ph-d2">
-                        <h1 className="ph-heading">
-                            Discover <span className="ph-pill-blue">naturally</span> made<br />
-                            Dairy Products!
-                            {/*<span className="ph-pill-green">dairy products</span>{" "}*/}
-                        </h1>
+                    {/*<div className="ph-animate ph-d2">*/}
+                    {/*    <h1 className="ph-heading">*/}
+                    {/*        Discover <span className="ph-pill-blue">naturally</span> made<br />*/}
+                    {/*        Dairy Products!*/}
+                    {/*        /!*<span className="ph-pill-green">dairy products</span>{" "}*!/*/}
+                    {/*    </h1>*/}
 
-                        <div className="ph-rule" />
-                    </div>
+                    {/*    <div className="ph-rule" />*/}
+                    {/*</div>*/}
 
                     {/*/!* Body + tags *!/*/}
                     {/*<div className="ph-animate ph-d3">*/}
