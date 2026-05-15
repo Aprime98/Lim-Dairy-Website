@@ -155,7 +155,7 @@ export default function ProductCard() {
                 /* ── Slide inner layout ── */
                 .slide-inner { display:flex;flex-direction:column;align-items:center;gap:24px;padding:60px 48px; }
                 @media(min-width:768px){ .slide-inner { flex-direction:row; } }
-                .slide-img-wrap { flex:1;display:flex;align-items:center;justify-content:center; min-height:250px;position:relative; }
+                .slide-img-wrap { flex:1;display:flex;align-items:center;justify-content:center; min-height:200px;position:relative; }
                 .slide-text { flex:1;text-align:left; }
 
                 /* ══════════════════════════════
@@ -246,11 +246,10 @@ export default function ProductCard() {
             <div style={{ maxWidth:'1200px', margin:'0 auto 50px auto', padding:'0 20px' }}>
 
                 <div className="card-outer">
-                    <div className="overflow-hidden">
-                        <div className="carousel-track max-h-200 lg:max-h-125
+                    <div className="overflow-hidden"
                          onTouchStart={handleTouchStart}
-                         onTouchEnd={handleTouchEnd}
-                         " style={{ transform:`translateX(-${current * 100}%)` }}>
+                         onTouchEnd={handleTouchEnd}>
+                        <div className="carousel-track max-h-200 lg:max-h-125" style={{ transform:`translateX(-${current * 100}%)` }}>
 
                             {/* ══════════════════════════
                                 SLIDE 1 — Packet Milk
@@ -369,7 +368,7 @@ export default function ProductCard() {
                                 <div className="ring ring-lala" style={{ width:180,height:180,bottom:-50,left:20 }} />
                                 <div className="slide-inner">
                                     <div className="slide-img-wrap">
-                                        <img src={lala} alt="Relish Lala" className="product-img img-lala h-64 lg:h-85" style={{ objectFit:'contain',position:'relative',zIndex:1 }} />
+                                        <img src={lala} alt="Relish Lala" className="product-img img-lala h-58 lg:h-85" style={{ objectFit:'contain',position:'relative',zIndex:1 }} />
                                     </div>
                                     <div className="slide-text">
                                         <span className="product-badge badge-lala">Naturally Fermented</span>
