@@ -4,6 +4,7 @@ import {
     packet_milk,
     R_Vanilla,
     lala,
+    sample
 } from '../../assets';
 
 export default function ProductCard() {
@@ -31,30 +32,29 @@ export default function ProductCard() {
     const quantities = [
         /* Packet Milk */
         [
-            { size: '250ml Carton', price: 420  },
-            { size: '500ml Carton', price: 530  },
+            { size: '250ml Carton', price: 420, image: packet_milk  },
+            { size: '500ml Carton', price: 530, image: sample  },
         ],
         /* Relish Yoghurt Strawberry */
         [
-            { size: '100ml Tray', price: 30  },
-            { size: '250ml Tray', price: 50  },
-            { size: '500ml Tray', price: 90  },
-            { size: '1L Bottle',    price: 150 },
-            { size: '2L Bottle',    price: 400 },
+            { size: '100ml Tray', price: 30, image: sample  },
+            { size: '250ml Tray', price: 50, image: R_Strawberry },
+            { size: '500ml Tray', price: 90, image: sample  },
+            { size: '1L Bottle',    price: 150, image: R_Vanilla  },
+            { size: '2L Bottle',    price: 400, image: sample },
         ],
         /* Relish Yoghurt Vanilla */
         [
-            { size: '100ml Tray', price: 30  },
-            { size: '250ml Tray', price: 50  },
-            { size: '500ml Tray', price: 90  },
-            { size: '1L Bottle',    price: 150 },
-            { size: '2L Bottle',    price: 400 },
+            { size: '100ml Tray', price: 30, image: sample  },
+            { size: '250ml Tray', price: 50, image: R_Strawberry },
+            { size: '500ml Tray', price: 90, image: sample  },
+            { size: '1L Bottle',    price: 150, image: R_Vanilla  },
+            { size: '2L Bottle',    price: 400, image: sample },
         ],
         /* Relish Lala */
         [
-            { size: '500ml Bottle', price: 90  },
-            { size: '1L Bottle',    price: 150 },
-            { size: '2L Bottle',    price: 400 },
+            { size: '500ml Bottle', price: 90, image: lala  },
+            { size: '1L Bottle',    price: 150, image: sample }
         ],
     ];
 
@@ -260,7 +260,7 @@ export default function ProductCard() {
                                 <div className="ring ring-milk" style={{ width:180,height:180,bottom:-50,left:20 }} />
                                 <div className="slide-inner">
                                     <div className="slide-img-wrap">
-                                        <img src={packet_milk} alt="Limuru Fresh Milk" className="product-img img-milk lg:h-85 h-64" style={{objectFit:'contain',position:'relative',zIndex:1 }} />
+                                        <img src={quantities[0][current === 0 ? selectedQty : 0].image ?? packet_milk} alt="Limuru Fresh Milk" className="product-img img-milk lg:h-85 h-64" style={{objectFit:'contain',position:'relative',zIndex:1 }} />
                                     </div>
                                     <div className="slide-text">
                                         <span className="product-badge badge-milk">Fresh Daily</span>
@@ -296,7 +296,7 @@ export default function ProductCard() {
                                 <div className="ring ring-strawberry" style={{ width:180,height:180,bottom:-50,left:20 }} />
                                 <div className="slide-inner">
                                     <div className="slide-img-wrap">
-                                        <img src={R_Strawberry} alt="Relish Yoghurt Strawberry" className="product-img img-strawberry lg:h-85" style={{objectFit:'contain',position:'relative',zIndex:1 }} />
+                                        <img src={quantities[1][current === 1 ? selectedQty : 0].image ?? R_Strawberry} alt="Relish Yoghurt Strawberry" className="product-img img-strawberry h-50 lg:h-85" style={{objectFit:'contain',position:'relative',zIndex:1 }} />
                                     </div>
                                     <div className="slide-text">
                                         <span className="product-badge badge-strawberry">Fan Favourite</span>
@@ -332,7 +332,7 @@ export default function ProductCard() {
                                 <div className="ring ring-vanilla" style={{ width:180,height:180,bottom:-50,left:20 }} />
                                 <div className="slide-inner">
                                     <div className="slide-img-wrap">
-                                        <img src={R_Vanilla} alt="Relish Yoghurt Vanilla" className="product-img img-vanilla lg:h-85" style={{ objectFit:'contain',position:'relative',zIndex:1 }} />
+                                        <img src={quantities[2][current === 2 ? selectedQty : 0].image ?? R_Vanilla} alt="Relish Yoghurt Vanilla" className="product-img img-vanilla lg:h-85 h-50" style={{ objectFit:'contain',position:'relative',zIndex:1 }} />
                                     </div>
                                     <div className="slide-text">
                                         <span className="product-badge badge-vanilla">Classic Choice</span>
@@ -368,7 +368,7 @@ export default function ProductCard() {
                                 <div className="ring ring-lala" style={{ width:180,height:180,bottom:-50,left:20 }} />
                                 <div className="slide-inner">
                                     <div className="slide-img-wrap">
-                                        <img src={lala} alt="Relish Lala" className="product-img img-lala h-58 lg:h-85" style={{ objectFit:'contain',position:'relative',zIndex:1 }} />
+                                        <img src={quantities[3][current === 3 ? selectedQty : 0].image ?? lala} alt="Relish Lala" className="product-img img-lala h-58 lg:h-85" style={{ objectFit:'contain',position:'relative',zIndex:1 }} />
                                     </div>
                                     <div className="slide-text">
                                         <span className="product-badge badge-lala">Naturally Fermented</span>

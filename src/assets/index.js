@@ -12,6 +12,7 @@ import cow_poland from "./Cow-Poland.webp"
 import cow_salt from "./Cow-Salt.webp"
 import dairy_meal from "./Dairy-Meal.webp"
 import piglet_starter from "./Piglet-Starter.jpg"
+import sample from "./white_yogho.png"
 
 
 export{
@@ -29,4 +30,5 @@ export{
     cow_salt,
     dairy_meal,
     piglet_starter,
+    sample
 }

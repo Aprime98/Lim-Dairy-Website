@@ -289,7 +289,7 @@ export default function Home_Hero() {
                 /* "100% Natural" badge */
                 .hero-badge {
                     position: absolute;
-                    top: 6%; right: 4%;
+                    top: 0; left: 35%;
                     background: linear-gradient(135deg, #FFB622, #FF8C00);
                     color: #fff;
                     font-family: 'Outfit', sans-serif;
@@ -307,7 +307,7 @@ export default function Home_Hero() {
                 /* Freshness indicator pill */
                 .hero-freshness {
                     position: absolute;
-                    bottom: 8%; left: 2%;
+                    bottom: -10%; left: 28%;
                     background: #111827;
                     border: 1px solid rgba(77,189,232,0.3);
                     border-radius: 14px;
@@ -412,41 +412,6 @@ export default function Home_Hero() {
                                 </div>
                             </div>
                         </div>
-
-                        <div className="hero-animate hidden lg:block delay-5">
-                            <div className="hero-stats">
-                                <div className="hero-stats-grid">
-                                    <div className="hero-stat-item">
-                                        <div className="hero-stat-icon-row">
-                                            <CheckCircle className="text-green-500" size={18} />
-                                            <span className="hero-stat-number">10,000+</span>
-                                        </div>
-                                        <p className="hero-stat-label">Local Farmers Supported</p>
-                                    </div>
-                                    <div className="hero-stat-item">
-                                        <div className="hero-stat-icon-row">
-                                            <Milk className="text-white" size={18} />
-                                            <span className="hero-stat-number">40,000+</span>
-                                        </div>
-                                        <p className="hero-stat-label">Litres Processed Daily</p>
-                                    </div>
-                                    <div className="hero-stat-item">
-                                        <div className="hero-stat-icon-row">
-                                            <MapPin className="text-red-500" size={18} />
-                                            <span className="hero-stat-number">40+</span>
-                                        </div>
-                                        <p className="hero-stat-label">Distribution Points</p>
-                                    </div>
-                                    <div className="hero-stat-item">
-                                        <div className="hero-stat-icon-row">
-                                            <SmilePlus className="text-yellow-500" size={18} />
-                                            <span className="hero-stat-number">100,000+</span>
-                                        </div>
-                                        <p className="hero-stat-label">Happy Consumers</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     {/* ── RIGHT: Product Image ── */}
@@ -480,6 +445,41 @@ export default function Home_Hero() {
                         />
                     </div>
 
+                </div>
+
+                <div className="hero-animate delay-5 pt-24">
+                    <div className="hero-stats">
+                        <div className="hero-stats-grid">
+                            <div className="hero-stat-item">
+                                <div className="hero-stat-icon-row">
+                                    <CheckCircle className="text-green-500" size={18} />
+                                    <span className="hero-stat-number">10,000+</span>
+                                </div>
+                                <p className="hero-stat-label">Local Farmers Supported</p>
+                            </div>
+                            <div className="hero-stat-item">
+                                <div className="hero-stat-icon-row">
+                                    <Milk className="text-white" size={18} />
+                                    <span className="hero-stat-number">40,000+</span>
+                                </div>
+                                <p className="hero-stat-label">Litres Processed Daily</p>
+                            </div>
+                            <div className="hero-stat-item">
+                                <div className="hero-stat-icon-row">
+                                    <MapPin className="text-red-500" size={18} />
+                                    <span className="hero-stat-number">40+</span>
+                                </div>
+                                <p className="hero-stat-label">Distribution Points</p>
+                            </div>
+                            <div className="hero-stat-item">
+                                <div className="hero-stat-icon-row">
+                                    <SmilePlus className="text-yellow-500" size={18} />
+                                    <span className="hero-stat-number">100,000+</span>
+                                </div>
+                                <p className="hero-stat-label">Happy Consumers</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </>
